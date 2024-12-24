@@ -8,9 +8,9 @@ RUN npm install
 
 EXPOSE 5173
 
-CMD [ "npm", "dev" ] 
+CMD ["npm", "run", "dev", "--", "--host"]
 
-# en charon ko execute karke ek docker image bana lo aur phir usko cmd wale command se run kar do
+
 
 
 
