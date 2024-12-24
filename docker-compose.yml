@@ -1,0 +1,27 @@
+services:
+
+  mydbcontainer:
+    image: mongoDB
+    environment:
+      - ROOT=value
+      - ROOT=value
+      - ROOT=value
+    container_name: mydbcontainer
+    healthcheck:
+      test: [ "executable", "arg" ]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+  myappcontainer:
+    build: ./
+    networks:
+      - mynet
+    depends_on:
+      mydbcontainer:
+        condition: services.healthcheck
+    volumes:
+    ./text.txt: /myapp/text.txt
+
+networks:
+  mynet:
